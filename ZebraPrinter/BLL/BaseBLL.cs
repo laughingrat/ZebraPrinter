@@ -81,6 +81,11 @@ namespace ZebraPrinter.BLL
       return dao.Delete(id);
     }
 
+    public bool DeleteAll() {
+      return dao.DeleteAll();
+    }
+
+
     public T Retrieve(int id)
     {
       if (id < 1)

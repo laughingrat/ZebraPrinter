@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="ZebraPrinter.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="ZebraPrinter.exe" version="2.0.0.6" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="ZebraPrinter" version="1.0.0.0" publicKeyToken="F5FC4F2306DD9314" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="ZebraPrinter" version="2.1.0.1" publicKeyToken="F5FC4F2306DD9314" language="neutral" processorArchitecture="x86" />
     <commandLine file="ZebraPrinter.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -54,24 +54,33 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ZebraPrinter.exe" size="37376">
-      <assemblyIdentity name="ZebraPrinter" version="1.0.0.0" publicKeyToken="F5FC4F2306DD9314" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ZebraPrinter.exe" size="70656">
+      <assemblyIdentity name="ZebraPrinter" version="2.1.0.1" publicKeyToken="F5FC4F2306DD9314" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>RB722lU7XgCYRu8Suc4CJidDNfY=</dsig:DigestValue>
+        <dsig:DigestValue>8wrFEgvrUdof9innsco24drnxAU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="ZebraPrinter.exe.config" size="225">
+  <file name="data\nutrition.mdb" size="442368" writeableType="applicationData">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>x0HI4Cs8ApQbJdSoYHpKOznKawk=</dsig:DigestValue>
+      <dsig:DigestValue>O49NmgTAFGm2OUvfN/A0jxjof5U=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="ZebraPrinter.exe.config" size="1369">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>l2mIL+2jvkrjx6VNHMM4mrtkvuw=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

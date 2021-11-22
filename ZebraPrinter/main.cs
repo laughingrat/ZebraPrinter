@@ -262,22 +262,27 @@ namespace ZebraPrinter
 
       this.dgvPatient.Font = new Font("Microsoft Sans Serif", 16);
 
+      var font = new Font("Microsoft Sans Serif", 12, FontStyle.Bold);
+
       DataGridViewButtonColumn btnUpdate = new DataGridViewButtonColumn();
       btnUpdate.Text = "修改";
       btnUpdate.UseColumnTextForButtonValue = true;
-      btnUpdate.Width = 70;
+      btnUpdate.Width = 50;
+      btnUpdate.DefaultCellStyle.Font = font;
       this.dgvPatient.Columns.Add(btnUpdate);
 
       DataGridViewButtonColumn btnDelete = new DataGridViewButtonColumn();
       btnDelete.Text = "删除";
       btnDelete.UseColumnTextForButtonValue = true;
-      btnDelete.Width = 70;
+      btnDelete.Width = 50;
+      btnDelete.DefaultCellStyle.Font = font;
       this.dgvPatient.Columns.Add(btnDelete);
 
       DataGridViewButtonColumn btnPrint = new DataGridViewButtonColumn();
       btnPrint.Text = "打印";
       btnPrint.UseColumnTextForButtonValue = true;
-      btnPrint.Width = 70;
+      btnPrint.Width = 50;
+      btnPrint.DefaultCellStyle.Font = font;
       this.dgvPatient.Columns.Add(btnPrint);
 
       this.dgvPatient.AllowUserToAddRows = true;
@@ -312,13 +317,15 @@ namespace ZebraPrinter
       this.dgvPatient.Columns[4].HeaderText = "插入时间" + (Sort == "InsertedOn" ? "*" : "");
       this.dgvPatient.Columns[4].ReadOnly = true;
       this.dgvPatient.Columns[4].DataPropertyName = "InsertedOn";
-      this.dgvPatient.Columns[4].Width = 250;
+      this.dgvPatient.Columns[4].Width = 190;
+      this.dgvPatient.Columns[4].DefaultCellStyle.Font = font;
       this.dgvPatient.Columns[4].HeaderCell.Style.Font = new Font("Microsoft Sans Serif", 18, FontStyle.Bold);
 
       this.dgvPatient.Columns[5].HeaderText = "修改时间" + (Sort == "UpdatedOn" ? "*" : "");
       this.dgvPatient.Columns[5].ReadOnly = true;
       this.dgvPatient.Columns[5].DataPropertyName = "UpdatedOn";
-      this.dgvPatient.Columns[5].Width = 250;
+      this.dgvPatient.Columns[5].Width = 190;
+      this.dgvPatient.Columns[5].DefaultCellStyle.Font = font;
       this.dgvPatient.Columns[5].HeaderCell.Style.Font = new Font("Microsoft Sans Serif", 18, FontStyle.Bold);
     }
 
@@ -418,5 +425,16 @@ namespace ZebraPrinter
     }
     #endregion
 
+    private void btnClear_Click(object sender, EventArgs e)
+    {
+      if (DialogResult.OK == MessageBox.Show("你确认要清空所有数据么？", "", MessageBoxButtons.OKCancel))
+      {
+        printBLL.DeleteAll();
+        patientBLL.DeleteAll();
+
+        RefreshData();
+        BindData();
+      }
+    }
   }
 }

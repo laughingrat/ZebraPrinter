@@ -88,7 +88,12 @@ namespace ZebraPrinter
 
         yPos += topMargin + headerHeight + 10;
 
-        args.Graphics.DrawString(string.Format("    {0}Kcal / {1}ml    X {2}{3}", this.txtKCal.Text, this.txtML.Text, this.quantity.Value, this.cbUnit.Text),
+        args.Graphics.DrawString(string.Format("    {0}{1}{2}    X {3}{4}", 
+            !String.IsNullOrWhiteSpace(this.txtKCal.Text) ? this.txtKCal.Text + "Kcal" : "",
+            !String.IsNullOrWhiteSpace(this.txtKCal.Text) && !String.IsNullOrWhiteSpace(this.txtML.Text) ? " / " : "",
+            !String.IsNullOrWhiteSpace(this.txtML.Text) ? this.txtML.Text + "ml" : "", 
+            this.quantity.Value, 
+            this.cbUnit.Text),
                       lineFontBold, Brushes.Black,
                     leftMargin, yPos, sfLeft);
 

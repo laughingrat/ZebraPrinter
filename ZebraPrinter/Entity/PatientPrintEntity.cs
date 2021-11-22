@@ -8,10 +8,8 @@ namespace ZebraPrinter.Entity
   {
     [Required]
     public int PatientId { get; set; }
-    [Required]
     [StringLength(10)]
     public string Calorie { get; set; }
-    [Required]
     [StringLength(10)]
     public string ML { get; set; }
     [Required]

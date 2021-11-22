@@ -66,9 +66,18 @@ namespace ZebraPrinter
 
       yPos += topMargin + headerHeight + 10;
 
-      graph.DrawString(string.Format("    {0}Kcal / {1}ml    X {2}{3}", print.Calorie, print.ML, print.Quantity, print.Unit),
-                    lineFontBold, Brushes.Black,
-                  leftMargin, yPos, sfLeft);
+      //graph.DrawString(string.Format("    {0}Kcal / {1}ml    X {2}{3}", print.Calorie, print.ML, print.Quantity, print.Unit),
+      //              lineFontBold, Brushes.Black,
+      //            leftMargin, yPos, sfLeft);
+
+      graph.DrawString(string.Format("    {0}{1}{2}    X {3}{4}",
+            !String.IsNullOrWhiteSpace(print.Calorie) ? print.Calorie + "Kcal" : "",
+            !String.IsNullOrWhiteSpace(print.ML) && !String.IsNullOrWhiteSpace(print.Calorie) ? " / " : "",
+            !String.IsNullOrWhiteSpace(print.ML) ? print.ML + "ml" : "",
+            print.Quantity,
+            print.Unit),
+                      lineFontBold, Brushes.Black,
+                    leftMargin, yPos, sfLeft);
 
       yPos = yPos + lineBoldHeight + 10;
 

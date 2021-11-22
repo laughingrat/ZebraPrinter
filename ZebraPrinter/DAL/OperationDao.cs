@@ -119,5 +119,11 @@ namespace ZebraPrinter.DAL
     {
       throw new NotImplementedException();
     }
+
+    public virtual bool DeleteAll() {
+      var sb = new StringBuilder();
+      sb.Append("DELETE FROM " + TableName + " WHERE ID > 0 ");
+      return ExecuteNonQuery(sb.ToString()) > 0;
+    }
   }
 }

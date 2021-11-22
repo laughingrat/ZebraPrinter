@@ -44,6 +44,7 @@
       this.btnReset = new System.Windows.Forms.Button();
       this.btnImport = new System.Windows.Forms.Button();
       this.btnExport = new System.Windows.Forms.Button();
+      this.btnClear = new System.Windows.Forms.Button();
       ((System.ComponentModel.ISupportInitialize)(this.dgvPatient)).BeginInit();
       this.SuspendLayout();
       // 
@@ -59,10 +60,10 @@
       dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
       this.dgvPatient.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
       this.dgvPatient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.dgvPatient.Location = new System.Drawing.Point(2, 47);
+      this.dgvPatient.Location = new System.Drawing.Point(2, 44);
       this.dgvPatient.Name = "dgvPatient";
       this.dgvPatient.RowTemplate.Height = 30;
-      this.dgvPatient.Size = new System.Drawing.Size(1474, 740);
+      this.dgvPatient.Size = new System.Drawing.Size(1260, 756);
       this.dgvPatient.TabIndex = 0;
       this.dgvPatient.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPatient_CellClick);
       this.dgvPatient.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvPatient_ColumnHeaderMouseClick);
@@ -70,9 +71,9 @@
       // btnAdd
       // 
       this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnAdd.Location = new System.Drawing.Point(902, 9);
+      this.btnAdd.Location = new System.Drawing.Point(836, 8);
       this.btnAdd.Name = "btnAdd";
-      this.btnAdd.Size = new System.Drawing.Size(75, 33);
+      this.btnAdd.Size = new System.Drawing.Size(64, 30);
       this.btnAdd.TabIndex = 6;
       this.btnAdd.Text = "添加";
       this.btnAdd.UseVisualStyleBackColor = true;
@@ -81,9 +82,9 @@
       // btnPrintTodayPatients
       // 
       this.btnPrintTodayPatients.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnPrintTodayPatients.Location = new System.Drawing.Point(1276, 9);
+      this.btnPrintTodayPatients.Location = new System.Drawing.Point(1096, 8);
       this.btnPrintTodayPatients.Name = "btnPrintTodayPatients";
-      this.btnPrintTodayPatients.Size = new System.Drawing.Size(200, 33);
+      this.btnPrintTodayPatients.Size = new System.Drawing.Size(154, 30);
       this.btnPrintTodayPatients.TabIndex = 9;
       this.btnPrintTodayPatients.Text = "打印今日病人列表";
       this.btnPrintTodayPatients.UseVisualStyleBackColor = true;
@@ -104,7 +105,7 @@
       this.beginDate.CustomFormat = "yyyy-MM-dd";
       this.beginDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.beginDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-      this.beginDate.Location = new System.Drawing.Point(68, 8);
+      this.beginDate.Location = new System.Drawing.Point(60, 7);
       this.beginDate.Name = "beginDate";
       this.beginDate.Size = new System.Drawing.Size(152, 31);
       this.beginDate.TabIndex = 1;
@@ -113,7 +114,7 @@
       // 
       this.label4.AutoSize = true;
       this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label4.Location = new System.Drawing.Point(8, 11);
+      this.label4.Location = new System.Drawing.Point(0, 13);
       this.label4.Name = "label4";
       this.label4.Size = new System.Drawing.Size(56, 25);
       this.label4.TabIndex = 3;
@@ -123,7 +124,7 @@
       // 
       this.label5.AutoSize = true;
       this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label5.Location = new System.Drawing.Point(226, 11);
+      this.label5.Location = new System.Drawing.Point(218, 13);
       this.label5.Name = "label5";
       this.label5.Size = new System.Drawing.Size(56, 25);
       this.label5.TabIndex = 3;
@@ -134,7 +135,7 @@
       this.endDate.CustomFormat = "yyyy-MM-dd";
       this.endDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.endDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-      this.endDate.Location = new System.Drawing.Point(286, 8);
+      this.endDate.Location = new System.Drawing.Point(278, 7);
       this.endDate.Name = "endDate";
       this.endDate.Size = new System.Drawing.Size(152, 31);
       this.endDate.TabIndex = 2;
@@ -142,7 +143,7 @@
       // tbKeyword
       // 
       this.tbKeyword.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tbKeyword.Location = new System.Drawing.Point(526, 8);
+      this.tbKeyword.Location = new System.Drawing.Point(512, 7);
       this.tbKeyword.Name = "tbKeyword";
       this.tbKeyword.Size = new System.Drawing.Size(191, 31);
       this.tbKeyword.TabIndex = 3;
@@ -151,7 +152,7 @@
       // 
       this.label6.AutoSize = true;
       this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label6.Location = new System.Drawing.Point(445, 11);
+      this.label6.Location = new System.Drawing.Point(434, 13);
       this.label6.Name = "label6";
       this.label6.Size = new System.Drawing.Size(78, 25);
       this.label6.TabIndex = 3;
@@ -160,9 +161,9 @@
       // btnSearch
       // 
       this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnSearch.Location = new System.Drawing.Point(740, 9);
+      this.btnSearch.Location = new System.Drawing.Point(706, 8);
       this.btnSearch.Name = "btnSearch";
-      this.btnSearch.Size = new System.Drawing.Size(75, 33);
+      this.btnSearch.Size = new System.Drawing.Size(64, 30);
       this.btnSearch.TabIndex = 4;
       this.btnSearch.Text = "搜索";
       this.btnSearch.UseVisualStyleBackColor = true;
@@ -171,9 +172,9 @@
       // btnReset
       // 
       this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnReset.Location = new System.Drawing.Point(821, 9);
+      this.btnReset.Location = new System.Drawing.Point(771, 8);
       this.btnReset.Name = "btnReset";
-      this.btnReset.Size = new System.Drawing.Size(75, 33);
+      this.btnReset.Size = new System.Drawing.Size(64, 30);
       this.btnReset.TabIndex = 5;
       this.btnReset.Text = "重置";
       this.btnReset.UseVisualStyleBackColor = true;
@@ -182,9 +183,9 @@
       // btnImport
       // 
       this.btnImport.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnImport.Location = new System.Drawing.Point(1114, 9);
+      this.btnImport.Location = new System.Drawing.Point(901, 8);
       this.btnImport.Name = "btnImport";
-      this.btnImport.Size = new System.Drawing.Size(75, 33);
+      this.btnImport.Size = new System.Drawing.Size(64, 30);
       this.btnImport.TabIndex = 7;
       this.btnImport.Text = "导入";
       this.btnImport.UseVisualStyleBackColor = true;
@@ -193,19 +194,30 @@
       // btnExport
       // 
       this.btnExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnExport.Location = new System.Drawing.Point(1195, 9);
+      this.btnExport.Location = new System.Drawing.Point(966, 8);
       this.btnExport.Name = "btnExport";
-      this.btnExport.Size = new System.Drawing.Size(75, 33);
+      this.btnExport.Size = new System.Drawing.Size(64, 30);
       this.btnExport.TabIndex = 8;
       this.btnExport.Text = "导出";
       this.btnExport.UseVisualStyleBackColor = true;
       this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
       // 
+      // btnClear
+      // 
+      this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnClear.Location = new System.Drawing.Point(1031, 8);
+      this.btnClear.Name = "btnClear";
+      this.btnClear.Size = new System.Drawing.Size(64, 30);
+      this.btnClear.TabIndex = 7;
+      this.btnClear.Text = "清空";
+      this.btnClear.UseVisualStyleBackColor = true;
+      this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+      // 
       // main
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(1479, 786);
+      this.ClientSize = new System.Drawing.Size(1264, 804);
       this.Controls.Add(this.endDate);
       this.Controls.Add(this.beginDate);
       this.Controls.Add(this.btnPrintTodayPatients);
@@ -215,6 +227,7 @@
       this.Controls.Add(this.label4);
       this.Controls.Add(this.btnReset);
       this.Controls.Add(this.btnExport);
+      this.Controls.Add(this.btnClear);
       this.Controls.Add(this.btnImport);
       this.Controls.Add(this.btnSearch);
       this.Controls.Add(this.btnAdd);
@@ -246,5 +259,6 @@
     private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnImport;
         private System.Windows.Forms.Button btnExport;
-    }
+    private System.Windows.Forms.Button btnClear;
+  }
 }
