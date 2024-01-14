@@ -14,13 +14,14 @@ namespace ZebraPrinter.DAL
     protected override string TableName { get => "Patient"; set => base.TableName = value; }
     public override PatientEntity Create(PatientEntity entity)
     {
-      var sql = "INSERT INTO " + TableName + " (fullname, department, bednumber, insertedon, updatedon) " +
-        "VALUES(@fullname, @department, @bednumber, @insertedon, @updatedon)";
+      var sql = "INSERT INTO " + TableName + " (fullname, department, bednumber, caseid, insertedon, updatedon) " +
+        "VALUES(@fullname, @department, @bednumber, @caseid, @insertedon, @updatedon)";
 
       var parameters = new List<OleDbParameterEntity>() {
       new OleDbParameterEntity("@fullname", OleDbType.VarWChar, entity.Name),
       new OleDbParameterEntity("@department", OleDbType.VarWChar, entity.Department),
       new OleDbParameterEntity("@bednumber", OleDbType.VarWChar, entity.BedNumber),
+      new OleDbParameterEntity("@caseid", OleDbType.VarWChar, entity.CaseId),
       new OleDbParameterEntity("@insertedon", OleDbType.Date, entity.InsertedOn),
       new OleDbParameterEntity("@updatedon", OleDbType.Date, entity.UpdatedOn)
       };
@@ -28,7 +29,7 @@ namespace ZebraPrinter.DAL
       var affectCount = ExecuteNonQuery(sql, parameters);
       if (affectCount == 1)
       {
-        sql = "SELECT TOP 1 * FROM " + TableName + " WHERE fullname=@fullname AND department=@department AND bednumber=@bednumber AND insertedon=@insertedon";
+        sql = "SELECT TOP 1 * FROM " + TableName + " WHERE fullname=@fullname AND department=@department AND bednumber=@bednumber AND caseid=@caseid  AND insertedon=@insertedon";
 
         var table = ExecuteTable(sql, parameters);
 
@@ -48,6 +49,7 @@ namespace ZebraPrinter.DAL
       sb.Append(" fullname=@fullname,");
       sb.Append(" department=@department,");
       sb.Append(" bednumber=@bednumber,");
+      sb.Append(" caseid=@caseid,");
       sb.Append(" updatedon=@updatedon ");
       sb.Append(" WHERE id=@id");
 
@@ -55,6 +57,7 @@ namespace ZebraPrinter.DAL
       new OleDbParameterEntity("@fullname", OleDbType.VarWChar, entity.Name),
       new OleDbParameterEntity("@department", OleDbType.VarWChar, entity.Department),
       new OleDbParameterEntity("@bednumber", OleDbType.VarWChar, entity.BedNumber),
+      new OleDbParameterEntity("@caseid", OleDbType.VarWChar, entity.CaseId),
       new OleDbParameterEntity("@updatedon", OleDbType.Date, entity.UpdatedOn),
       new OleDbParameterEntity("@id", OleDbType.Integer, entity.Id)
       };
@@ -71,6 +74,7 @@ namespace ZebraPrinter.DAL
         Name = datarow["fullName"].ToString(),
         BedNumber = datarow["bednumber"].ToString(),
         Department = datarow["department"].ToString(),
+        CaseId = datarow["caseid"].ToString(),
         InsertedOn = ConvertHelper.CovertToDateTime(datarow["insertedon"]).GetValueOrDefault(DateTime.Now),
         UpdatedOn = ConvertHelper.CovertToDateTime(datarow["updatedon"]).GetValueOrDefault(DateTime.Now)
       };

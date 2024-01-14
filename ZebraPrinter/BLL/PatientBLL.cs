@@ -82,6 +82,7 @@ namespace ZebraPrinter.BLL
         Name = tp.Name,
         Department = tp.Department,
         BedNumber = tp.BedNumber,
+        CaseId = tp.CaseId,
         InsertedOn = tp.InsertedOn,
         UpdatedOn = tp.UpdatedOn,
         Prints = prints.Where(p => p.PatientId == tp.Id).OrderBy(p => p.PrintDate).ToList()
@@ -116,6 +117,13 @@ namespace ZebraPrinter.BLL
       }
 
       return string.Empty;
+    }
+
+    public void CopyPatientToToday(int id)
+    {
+      PatientEntity patient = this.dao.Retrieve(id);
+      patient.UpdatedOn = DateTime.Now;
+      this.dao.Update(patient);
     }
   }
 }

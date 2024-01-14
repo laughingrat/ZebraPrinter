@@ -15,5 +15,8 @@ namespace ZebraPrinter.Entity
     [Required]
     [StringLength(255)]
     public string BedNumber { get; set; }
+    [Required]
+    [StringLength(255)]
+    public string CaseId { get; set; }
   }
 }

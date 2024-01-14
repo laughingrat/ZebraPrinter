@@ -60,7 +60,7 @@ namespace ZebraPrinter
       sfLeft.LineAlignment = StringAlignment.Near;
 
 
-      graph.DrawString(string.Format("{0}    {1}科 {2}床", patient.Name, patient.Department.Replace("科", ""), patient.BedNumber.Replace("床", "")),
+      graph.DrawString(string.Format("{0}    {1}科 #{2}", patient.Name, patient.Department.Replace("科", ""), patient.BedNumber.Replace("床", "")),
                 headerFont, Brushes.Black,
                   leftMargin, yPos, sfLeft);
 

@@ -62,11 +62,11 @@ namespace ZebraPrinter
         Font headerFont = new Font("Arial", 11, FontStyle.Bold);
         float headerHeight = headerFont.GetHeight(args.Graphics);
 
-        Font footerFont = new Font("Arial", 7);
+        Font footerFont = new Font("Arial", 8);
         float footerHeight = footerFont.GetHeight(args.Graphics);
 
 
-        float leftMargin = args.MarginBounds.Left;
+        float leftMargin = args.MarginBounds.Left + 10;
         float topMargin = args.MarginBounds.Top;
 
         int height = args.PageSettings.PaperSize.Height;
@@ -82,40 +82,46 @@ namespace ZebraPrinter
         sfLeft.LineAlignment = StringAlignment.Near;
 
 
-        args.Graphics.DrawString(string.Format("{0}    {1}科 {2}床", this.txtName.Text, this.txtDepartment.Text.Replace("科", ""), this.txtNumber.Text.Replace("床", "")),
+        args.Graphics.DrawString(string.Format("{0}  病案号:{1}", this.txtName.Text, this.txtCaseId.Text),
                   headerFont, Brushes.Black,
                     leftMargin, yPos, sfLeft);
 
-        yPos += topMargin + headerHeight + 10;
+        yPos += topMargin + headerHeight + 5;
 
-        args.Graphics.DrawString(string.Format("    {0}{1}{2}    X {3}{4}", 
+
+        args.Graphics.DrawString(string.Format("{0} {1}床", this.txtDepartment.Text, this.txtNumber.Text.Replace("床", "")),
+                headerFont, Brushes.Black,
+                  leftMargin, yPos, sfLeft);
+
+        yPos += topMargin + headerHeight + 5;
+
+        args.Graphics.DrawString(string.Format("{0}{1}{2}    X {3}{4}", 
             !String.IsNullOrWhiteSpace(this.txtKCal.Text) ? this.txtKCal.Text + "Kcal" : "",
             !String.IsNullOrWhiteSpace(this.txtKCal.Text) && !String.IsNullOrWhiteSpace(this.txtML.Text) ? " / " : "",
             !String.IsNullOrWhiteSpace(this.txtML.Text) ? this.txtML.Text + "ml" : "", 
             this.quantity.Value, 
             this.cbUnit.Text),
-                      lineFontBold, Brushes.Black,
+                      headerFont, Brushes.Black,
                     leftMargin, yPos, sfLeft);
 
         yPos = yPos + lineBoldHeight + 10;
 
-        args.Graphics.DrawString("配制时间：" + this.dt.Value.ToString("yyyy-MM-dd HH:mm"), lineFont, Brushes.Black,
+        args.Graphics.DrawString("                 配制时间：" + this.dt.Value.ToString("yyyy-MM-dd HH:mm"), lineFont, Brushes.Black,
                      leftMargin, yPos, sfLeft);
 
-        yPos = yPos + lineHeight;
+        yPos = yPos + lineHeight + 2;
 
-        args.Graphics.DrawString("冷藏保存 24小时", footerFont, Brushes.Black,
+        args.Graphics.DrawString("                                     冷藏保存 24小时", footerFont, Brushes.Black,
+                     leftMargin, yPos, sfLeft);
+        yPos = yPos + lineHeight + 2;
+
+        args.Graphics.DrawString("         仅供肠内营养治疗 严禁静脉输注", footerFont, Brushes.Black,
                      leftMargin, yPos, sfLeft);
 
-        yPos = yPos + lineHeight;
+        yPos = yPos + lineHeight + 2;
 
-        args.Graphics.DrawString("      仅供肠内营养治疗 严禁静脉输注", footerFont, Brushes.Black,
-                     leftMargin, yPos, sfLeft);
-
-        yPos = yPos + lineHeight;
-
-        args.Graphics.DrawString("      交大二附院营养科 029-87679504", footerFont, Brushes.Black,
-                    leftMargin, yPos, sfLeft);
+        args.Graphics.DrawString("        交大二附院营养科 029-87679504", footerFont, Brushes.Black,
+                    leftMargin , yPos, sfLeft);
 
 
 
@@ -139,13 +145,21 @@ namespace ZebraPrinter
     private void btnPrint_Click(object sender, EventArgs e)
     {
       int count = 0;
-      while (count < this.quantity.Value)
+      while (count < this.quantity.Value + 1)
       {
         doPrint();
         count++;
       }
 
-      printBLL.Create(getCurrentPrint());
+      try
+      {
+        printBLL.Create(getCurrentPrint());
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show("错误：" + ex.Message);
+      }
+     
 
       BindPrintData();
       BindLastPrint();
@@ -169,6 +183,7 @@ namespace ZebraPrinter
       txtName.Text = patient.Name;
       txtDepartment.Text = patient.Department;
       txtNumber.Text = patient.BedNumber;
+      txtCaseId.Text = patient.CaseId;
     }
 
     private void BindPrintData()
@@ -202,5 +217,6 @@ namespace ZebraPrinter
       var preview = new PrintPreview(patient, getCurrentPrint());
       preview.ShowDialog();
     }
+
   }
 }

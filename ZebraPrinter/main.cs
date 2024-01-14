@@ -63,7 +63,7 @@ namespace ZebraPrinter
         return;
       }
 
-      if (e.ColumnIndex > 5)
+      if (e.ColumnIndex > 6)
       {
         int id = ConvertHelper.ConvertToInt(this.dgvPatient.Rows[e.RowIndex].Cells[0].Value.ToString(), 0);
         PatientFullEntity entity = listPatient.Find(p => p.Id == id);
@@ -72,7 +72,7 @@ namespace ZebraPrinter
 
         switch (e.ColumnIndex)
         {
-          case 6: // 修改
+          case 7: // 修改
             var patientForm = new Patient(entity);
             var result = patientForm.ShowDialog();
             if (result == DialogResult.OK)
@@ -82,14 +82,19 @@ namespace ZebraPrinter
               BindData();
             }
             break;
-          case 7:  // 删除
+          case 8:  // 删除
             patientBLL.Delete(id);
             RefreshData();
             BindData();
             break;
-          case 8: // 打印
+          case 9: // 打印
             Print p = new Print(entity, printBLL);
             p.ShowDialog();
+            break;
+          case 10:
+            patientBLL.CopyPatientToToday(id);
+            RefreshData();
+            BindData();
             break;
         }
       }
@@ -97,7 +102,7 @@ namespace ZebraPrinter
 
     private void dgvPatient_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
     {
-      if (e.ColumnIndex > -1 && e.ColumnIndex < 6)
+      if (e.ColumnIndex > -1 && e.ColumnIndex < 7)
       {
         var newSort = this.dgvPatient.Columns[e.ColumnIndex].DataPropertyName;
 
@@ -247,6 +252,8 @@ namespace ZebraPrinter
               return p1.Department.CompareTo(p2.Department) * order;
             case "BedNumber":
               return p1.BedNumber.CompareTo(p2.BedNumber) * order;
+            case "CaseId":
+              return p1.CaseId.CompareTo(p2.CaseId) * order;
             case "InsertedOn":
               return p1.InsertedOn.CompareTo(p2.InsertedOn) * order;
             case "UpdatedOn":
@@ -285,6 +292,13 @@ namespace ZebraPrinter
       btnPrint.DefaultCellStyle.Font = font;
       this.dgvPatient.Columns.Add(btnPrint);
 
+      DataGridViewButtonColumn btnCopyToToday = new DataGridViewButtonColumn();
+      btnCopyToToday.Text = "转入今日";
+      btnCopyToToday.UseColumnTextForButtonValue = true;
+      btnCopyToToday.Width = 100;
+      btnCopyToToday.DefaultCellStyle.Font = font;
+      this.dgvPatient.Columns.Add(btnCopyToToday);
+
       this.dgvPatient.AllowUserToAddRows = true;
       this.dgvPatient.AllowUserToDeleteRows = true;
       this.dgvPatient.AllowUserToOrderColumns = true;
@@ -296,37 +310,43 @@ namespace ZebraPrinter
       this.dgvPatient.Columns[0].HeaderCell.Style.Font = new Font("Microsoft Sans Serif", 18, FontStyle.Bold);
       this.dgvPatient.Columns[0].DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 16);
 
-      this.dgvPatient.Columns[1].HeaderText = "姓名" + (Sort == "Name" ? "*" : "");
+      this.dgvPatient.Columns[1].HeaderText = "病案号" + (Sort == "CaseId" ? "*" : "");
       this.dgvPatient.Columns[1].ReadOnly = true;
-      this.dgvPatient.Columns[1].DataPropertyName = "Name";
+      this.dgvPatient.Columns[1].DataPropertyName = "CaseId";
       this.dgvPatient.Columns[1].Width = 200;
       this.dgvPatient.Columns[1].HeaderCell.Style.Font = new Font("Microsoft Sans Serif", 18, FontStyle.Bold);
 
-      this.dgvPatient.Columns[2].HeaderText = "科室" + (Sort == "Department" ? "*" : "");
+      this.dgvPatient.Columns[2].HeaderText = "姓名" + (Sort == "Name" ? "*" : "");
       this.dgvPatient.Columns[2].ReadOnly = true;
-      this.dgvPatient.Columns[2].DataPropertyName = "Department";
+      this.dgvPatient.Columns[2].DataPropertyName = "Name";
       this.dgvPatient.Columns[2].Width = 200;
       this.dgvPatient.Columns[2].HeaderCell.Style.Font = new Font("Microsoft Sans Serif", 18, FontStyle.Bold);
 
-      this.dgvPatient.Columns[3].HeaderText = "床号" + (Sort == "BedNumber" ? "*" : "");
+      this.dgvPatient.Columns[3].HeaderText = "科室" + (Sort == "Department" ? "*" : "");
       this.dgvPatient.Columns[3].ReadOnly = true;
-      this.dgvPatient.Columns[3].DataPropertyName = "BedNumber";
+      this.dgvPatient.Columns[3].DataPropertyName = "Department";
       this.dgvPatient.Columns[3].Width = 200;
       this.dgvPatient.Columns[3].HeaderCell.Style.Font = new Font("Microsoft Sans Serif", 18, FontStyle.Bold);
 
-      this.dgvPatient.Columns[4].HeaderText = "插入时间" + (Sort == "InsertedOn" ? "*" : "");
+      this.dgvPatient.Columns[4].HeaderText = "床号" + (Sort == "BedNumber" ? "*" : "");
       this.dgvPatient.Columns[4].ReadOnly = true;
-      this.dgvPatient.Columns[4].DataPropertyName = "InsertedOn";
-      this.dgvPatient.Columns[4].Width = 190;
-      this.dgvPatient.Columns[4].DefaultCellStyle.Font = font;
+      this.dgvPatient.Columns[4].DataPropertyName = "BedNumber";
+      this.dgvPatient.Columns[4].Width = 200;
       this.dgvPatient.Columns[4].HeaderCell.Style.Font = new Font("Microsoft Sans Serif", 18, FontStyle.Bold);
 
-      this.dgvPatient.Columns[5].HeaderText = "修改时间" + (Sort == "UpdatedOn" ? "*" : "");
+      this.dgvPatient.Columns[5].HeaderText = "插入时间" + (Sort == "InsertedOn" ? "*" : "");
       this.dgvPatient.Columns[5].ReadOnly = true;
-      this.dgvPatient.Columns[5].DataPropertyName = "UpdatedOn";
+      this.dgvPatient.Columns[5].DataPropertyName = "InsertedOn";
       this.dgvPatient.Columns[5].Width = 190;
       this.dgvPatient.Columns[5].DefaultCellStyle.Font = font;
       this.dgvPatient.Columns[5].HeaderCell.Style.Font = new Font("Microsoft Sans Serif", 18, FontStyle.Bold);
+
+      this.dgvPatient.Columns[6].HeaderText = "修改时间" + (Sort == "UpdatedOn" ? "*" : "");
+      this.dgvPatient.Columns[6].ReadOnly = true;
+      this.dgvPatient.Columns[6].DataPropertyName = "UpdatedOn";
+      this.dgvPatient.Columns[6].Width = 190;
+      this.dgvPatient.Columns[6].DefaultCellStyle.Font = font;
+      this.dgvPatient.Columns[6].HeaderCell.Style.Font = new Font("Microsoft Sans Serif", 18, FontStyle.Bold);
     }
 
     private void BackupData()
@@ -362,26 +382,28 @@ namespace ZebraPrinter
         // 页头
         string header = string.Format("{0}肠内营养液发放记录表", DateTime.Now.ToString("yyyy年MM月dd日"));
         Font headerFont = new Font("Arial", 25, FontStyle.Bold);
-        e.Graphics.DrawString(header, headerFont, Brushes.Black, 70, totalHeight);
+        e.Graphics.DrawString(header, headerFont, Brushes.Black, leftMargin, totalHeight);
 
         totalHeight += headerFont.GetHeight(e.Graphics);
 
         totalHeight += 40;
 
-        float row1X = leftMargin;
+        float row1X = 10;
         float row2X = row1X + 100;
-        float row3X = row2X + 120;
-        float row4X = row3X + 100;
-        float row5X = row4X + 220;
+        float row3X = row2X + 100;
+        float row4X = row3X + 180;
+        float row5X = row4X + 70;
+        float row6X = row5X + 200;
         float rowHeight = 40;
 
         // table header
         Font tableHeaderFont = new Font("Arial", 20, FontStyle.Bold);
-        e.Graphics.DrawString("科室", tableHeaderFont, Brushes.Black, row1X, totalHeight);
-        e.Graphics.DrawString("姓名", tableHeaderFont, Brushes.Black, row2X, totalHeight);
-        e.Graphics.DrawString("病床", tableHeaderFont, Brushes.Black, row3X, totalHeight);
-        e.Graphics.DrawString("热能", tableHeaderFont, Brushes.Black, row4X, totalHeight);
-        e.Graphics.DrawString("签名", tableHeaderFont, Brushes.Black, row5X, totalHeight);
+        e.Graphics.DrawString("姓名", tableHeaderFont, Brushes.Black, row1X, totalHeight);
+        e.Graphics.DrawString("病案号", tableHeaderFont, Brushes.Black, row2X, totalHeight);
+        e.Graphics.DrawString("科室", tableHeaderFont, Brushes.Black, row3X, totalHeight);
+        e.Graphics.DrawString("床号", tableHeaderFont, Brushes.Black, row4X, totalHeight);
+        e.Graphics.DrawString("热能", tableHeaderFont, Brushes.Black, row5X + 60, totalHeight);
+        e.Graphics.DrawString("签名", tableHeaderFont, Brushes.Black, row6X, totalHeight);
 
         totalHeight += rowHeight;
         totalHeight += 15;
@@ -389,15 +411,16 @@ namespace ZebraPrinter
         Font tableRowFont = new Font("Arial", 14, FontStyle.Regular);
         foreach (var entity in list)
         {
-          e.Graphics.DrawString(entity.Department, tableRowFont, Brushes.Black, row1X, totalHeight);
-          e.Graphics.DrawString(entity.Name, tableRowFont, Brushes.Black, row2X, totalHeight);
-          e.Graphics.DrawString(entity.BedNumber, tableRowFont, Brushes.Black, row3X, totalHeight);
+          e.Graphics.DrawString(entity.Name, tableRowFont, Brushes.Black, row1X, totalHeight);
+          e.Graphics.DrawString(entity.CaseId, tableRowFont, Brushes.Black, row2X, totalHeight);
+          e.Graphics.DrawString(entity.Department, tableRowFont, Brushes.Black, row3X, totalHeight);
+          e.Graphics.DrawString(entity.BedNumber, tableRowFont, Brushes.Black, row4X, totalHeight);
           if (entity.Prints != null && entity.Prints.Count > 0)
           {
             var lastPrint = entity.Prints.Last();
-            e.Graphics.DrawString(string.Format("{0}kal/{1}ml * {2}{3}", lastPrint.Calorie, lastPrint.ML, lastPrint.Quantity, lastPrint.Unit), tableRowFont, Brushes.Black, row4X, totalHeight);
+            e.Graphics.DrawString(string.Format("{0}kal/{1}ml*{2}{3}", lastPrint.Calorie, lastPrint.ML, lastPrint.Quantity, lastPrint.Unit), tableRowFont, Brushes.Black, row5X, totalHeight);
           }
-          e.Graphics.DrawLine(Pens.Black, new Point((int)row5X, (int)totalHeight + (int)rowHeight - 15), new Point((int)row5X + 150, (int)totalHeight + (int)rowHeight - 15));
+          e.Graphics.DrawLine(Pens.Black, new Point((int)row6X, (int)totalHeight + (int)rowHeight - 15), new Point((int)row6X + 150, (int)totalHeight + (int)rowHeight - 15));
 
           totalHeight += rowHeight;
           totalHeight += 5;

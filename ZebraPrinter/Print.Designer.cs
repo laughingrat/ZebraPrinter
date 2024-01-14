@@ -47,6 +47,8 @@
       this.cbUnit = new System.Windows.Forms.ComboBox();
       this.btnClose = new System.Windows.Forms.Button();
       this.groupBox1 = new System.Windows.Forms.GroupBox();
+      this.txtCaseId = new System.Windows.Forms.TextBox();
+      this.label2 = new System.Windows.Forms.Label();
       this.btnPrintPreview = new System.Windows.Forms.Button();
       this.groupBox2 = new System.Windows.Forms.GroupBox();
       this.labLastPrintInfo = new System.Windows.Forms.Label();
@@ -58,7 +60,7 @@
       // btnPrint
       // 
       this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnPrint.Location = new System.Drawing.Point(919, 145);
+      this.btnPrint.Location = new System.Drawing.Point(919, 216);
       this.btnPrint.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
       this.btnPrint.Name = "btnPrint";
       this.btnPrint.Size = new System.Drawing.Size(149, 48);
@@ -74,7 +76,7 @@
       this.txtName.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
       this.txtName.Name = "txtName";
       this.txtName.ReadOnly = true;
-      this.txtName.Size = new System.Drawing.Size(257, 32);
+      this.txtName.Size = new System.Drawing.Size(257, 44);
       this.txtName.TabIndex = 1;
       // 
       // lblName
@@ -84,100 +86,100 @@
       this.lblName.Location = new System.Drawing.Point(17, 36);
       this.lblName.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
       this.lblName.Name = "lblName";
-      this.lblName.Size = new System.Drawing.Size(104, 26);
+      this.lblName.Size = new System.Drawing.Size(149, 37);
       this.lblName.TabIndex = 2;
       this.lblName.Text = "病人名称";
       // 
       // txtDepartment
       // 
       this.txtDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtDepartment.Location = new System.Drawing.Point(535, 34);
+      this.txtDepartment.Location = new System.Drawing.Point(155, 108);
       this.txtDepartment.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
       this.txtDepartment.Name = "txtDepartment";
       this.txtDepartment.ReadOnly = true;
-      this.txtDepartment.Size = new System.Drawing.Size(257, 32);
+      this.txtDepartment.Size = new System.Drawing.Size(257, 44);
       this.txtDepartment.TabIndex = 2;
       // 
       // lblDepartment
       // 
       this.lblDepartment.AutoSize = true;
       this.lblDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblDepartment.Location = new System.Drawing.Point(455, 36);
+      this.lblDepartment.Location = new System.Drawing.Point(58, 110);
       this.lblDepartment.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
       this.lblDepartment.Name = "lblDepartment";
-      this.lblDepartment.Size = new System.Drawing.Size(58, 26);
+      this.lblDepartment.Size = new System.Drawing.Size(83, 37);
       this.lblDepartment.TabIndex = 2;
       this.lblDepartment.Text = "科室";
       // 
       // txtNumber
       // 
       this.txtNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtNumber.Location = new System.Drawing.Point(951, 34);
+      this.txtNumber.Location = new System.Drawing.Point(544, 108);
       this.txtNumber.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
       this.txtNumber.Name = "txtNumber";
       this.txtNumber.ReadOnly = true;
-      this.txtNumber.Size = new System.Drawing.Size(257, 32);
+      this.txtNumber.Size = new System.Drawing.Size(257, 44);
       this.txtNumber.TabIndex = 3;
       // 
       // lblNumber
       // 
       this.lblNumber.AutoSize = true;
       this.lblNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblNumber.Location = new System.Drawing.Point(833, 36);
+      this.lblNumber.Location = new System.Drawing.Point(448, 110);
       this.lblNumber.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
       this.lblNumber.Name = "lblNumber";
-      this.lblNumber.Size = new System.Drawing.Size(81, 26);
+      this.lblNumber.Size = new System.Drawing.Size(83, 37);
       this.lblNumber.TabIndex = 2;
-      this.lblNumber.Text = "病床号";
+      this.lblNumber.Text = "床号";
       // 
       // lblKCal
       // 
       this.lblKCal.AutoSize = true;
       this.lblKCal.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblKCal.Location = new System.Drawing.Point(60, 101);
+      this.lblKCal.Location = new System.Drawing.Point(60, 174);
       this.lblKCal.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
       this.lblKCal.Name = "lblKCal";
-      this.lblKCal.Size = new System.Drawing.Size(58, 26);
+      this.lblKCal.Size = new System.Drawing.Size(83, 37);
       this.lblKCal.TabIndex = 3;
       this.lblKCal.Text = "热能";
       // 
       // txtKCal
       // 
       this.txtKCal.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtKCal.Location = new System.Drawing.Point(155, 94);
+      this.txtKCal.Location = new System.Drawing.Point(155, 167);
       this.txtKCal.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
       this.txtKCal.Name = "txtKCal";
-      this.txtKCal.Size = new System.Drawing.Size(257, 32);
+      this.txtKCal.Size = new System.Drawing.Size(257, 44);
       this.txtKCal.TabIndex = 4;
       // 
       // label3
       // 
       this.label3.AutoSize = true;
       this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label3.Location = new System.Drawing.Point(456, 101);
+      this.label3.Location = new System.Drawing.Point(456, 174);
       this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
       this.label3.Name = "label3";
-      this.label3.Size = new System.Drawing.Size(72, 25);
+      this.label3.Size = new System.Drawing.Size(106, 37);
       this.label3.TabIndex = 3;
       this.label3.Text = "Kcal/  ";
       // 
       // txtML
       // 
       this.txtML.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtML.Location = new System.Drawing.Point(535, 94);
+      this.txtML.Location = new System.Drawing.Point(544, 167);
       this.txtML.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
       this.txtML.Name = "txtML";
-      this.txtML.Size = new System.Drawing.Size(257, 32);
+      this.txtML.Size = new System.Drawing.Size(257, 44);
       this.txtML.TabIndex = 5;
       // 
       // label4
       // 
       this.label4.AutoSize = true;
       this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label4.Location = new System.Drawing.Point(809, 101);
+      this.label4.Location = new System.Drawing.Point(809, 174);
       this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
       this.label4.Name = "label4";
-      this.label4.Size = new System.Drawing.Size(34, 25);
+      this.label4.Size = new System.Drawing.Size(51, 37);
       this.label4.TabIndex = 3;
       this.label4.Text = "ml";
       // 
@@ -185,10 +187,10 @@
       // 
       this.label5.AutoSize = true;
       this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label5.Location = new System.Drawing.Point(15, 161);
+      this.label5.Location = new System.Drawing.Point(15, 232);
       this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
       this.label5.Name = "label5";
-      this.label5.Size = new System.Drawing.Size(104, 26);
+      this.label5.Size = new System.Drawing.Size(149, 37);
       this.label5.TabIndex = 4;
       this.label5.Text = "配制时间";
       // 
@@ -197,30 +199,30 @@
       this.dt.CustomFormat = "yyyy-MM-dd HH:mm";
       this.dt.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.dt.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-      this.dt.Location = new System.Drawing.Point(155, 161);
+      this.dt.Location = new System.Drawing.Point(155, 232);
       this.dt.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
       this.dt.Name = "dt";
-      this.dt.Size = new System.Drawing.Size(297, 32);
+      this.dt.Size = new System.Drawing.Size(297, 44);
       this.dt.TabIndex = 8;
       // 
       // label1
       // 
       this.label1.AutoSize = true;
       this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label1.Location = new System.Drawing.Point(863, 101);
+      this.label1.Location = new System.Drawing.Point(863, 174);
       this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
       this.label1.Name = "label1";
-      this.label1.Size = new System.Drawing.Size(20, 25);
+      this.label1.Size = new System.Drawing.Size(29, 37);
       this.label1.TabIndex = 8;
       this.label1.Text = "*";
       // 
       // quantity
       // 
       this.quantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.quantity.Location = new System.Drawing.Point(897, 94);
+      this.quantity.Location = new System.Drawing.Point(897, 167);
       this.quantity.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
       this.quantity.Name = "quantity";
-      this.quantity.Size = new System.Drawing.Size(123, 32);
+      this.quantity.Size = new System.Drawing.Size(123, 44);
       this.quantity.TabIndex = 6;
       this.quantity.Value = new decimal(new int[] {
             1,
@@ -235,16 +237,16 @@
       this.cbUnit.Items.AddRange(new object[] {
             "袋",
             "杯"});
-      this.cbUnit.Location = new System.Drawing.Point(1031, 94);
+      this.cbUnit.Location = new System.Drawing.Point(1031, 167);
       this.cbUnit.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
       this.cbUnit.Name = "cbUnit";
-      this.cbUnit.Size = new System.Drawing.Size(121, 33);
+      this.cbUnit.Size = new System.Drawing.Size(121, 45);
       this.cbUnit.TabIndex = 7;
       // 
       // btnClose
       // 
       this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnClose.Location = new System.Drawing.Point(1081, 145);
+      this.btnClose.Location = new System.Drawing.Point(1081, 216);
       this.btnClose.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
       this.btnClose.Name = "btnClose";
       this.btnClose.Size = new System.Drawing.Size(149, 48);
@@ -255,6 +257,8 @@
       // 
       // groupBox1
       // 
+      this.groupBox1.Controls.Add(this.txtCaseId);
+      this.groupBox1.Controls.Add(this.label2);
       this.groupBox1.Controls.Add(this.btnPrintPreview);
       this.groupBox1.Controls.Add(this.txtName);
       this.groupBox1.Controls.Add(this.btnClose);
@@ -275,34 +279,56 @@
       this.groupBox1.Controls.Add(this.lblNumber);
       this.groupBox1.Controls.Add(this.lblKCal);
       this.groupBox1.Location = new System.Drawing.Point(16, 15);
-      this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
       this.groupBox1.Name = "groupBox1";
-      this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-      this.groupBox1.Size = new System.Drawing.Size(1244, 207);
+      this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+      this.groupBox1.Size = new System.Drawing.Size(1244, 295);
       this.groupBox1.TabIndex = 10;
       this.groupBox1.TabStop = false;
       this.groupBox1.Text = "打印";
       // 
+      // txtCaseId
+      // 
+      this.txtCaseId.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.txtCaseId.Location = new System.Drawing.Point(544, 39);
+      this.txtCaseId.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+      this.txtCaseId.Name = "txtCaseId";
+      this.txtCaseId.ReadOnly = true;
+      this.txtCaseId.Size = new System.Drawing.Size(257, 44);
+      this.txtCaseId.TabIndex = 11;
+      // 
+      // label2
+      // 
+      this.label2.AutoSize = true;
+      this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label2.Location = new System.Drawing.Point(435, 41);
+      this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+      this.label2.Name = "label2";
+      this.label2.Size = new System.Drawing.Size(116, 37);
+      this.label2.TabIndex = 12;
+      this.label2.Text = "病案号";
+      // 
       // btnPrintPreview
       // 
       this.btnPrintPreview.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnPrintPreview.Location = new System.Drawing.Point(748, 146);
+      this.btnPrintPreview.Location = new System.Drawing.Point(748, 217);
       this.btnPrintPreview.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
       this.btnPrintPreview.Name = "btnPrintPreview";
       this.btnPrintPreview.Size = new System.Drawing.Size(149, 48);
       this.btnPrintPreview.TabIndex = 10;
       this.btnPrintPreview.Text = "打印预览";
       this.btnPrintPreview.UseVisualStyleBackColor = true;
+      this.btnPrintPreview.Visible = false;
       this.btnPrintPreview.Click += new System.EventHandler(this.btnPrintPreview_Click);
       // 
       // groupBox2
       // 
       this.groupBox2.Controls.Add(this.labLastPrintInfo);
-      this.groupBox2.Location = new System.Drawing.Point(17, 230);
-      this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.groupBox2.Location = new System.Drawing.Point(17, 318);
+      this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
       this.groupBox2.Name = "groupBox2";
-      this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-      this.groupBox2.Size = new System.Drawing.Size(1243, 184);
+      this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
+      this.groupBox2.Size = new System.Drawing.Size(1243, 396);
       this.groupBox2.TabIndex = 11;
       this.groupBox2.TabStop = false;
       this.groupBox2.Text = "上次打印信息";
@@ -313,15 +339,15 @@
       this.labLastPrintInfo.Location = new System.Drawing.Point(41, 40);
       this.labLastPrintInfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.labLastPrintInfo.Name = "labLastPrintInfo";
-      this.labLastPrintInfo.Size = new System.Drawing.Size(134, 26);
+      this.labLastPrintInfo.Size = new System.Drawing.Size(197, 37);
       this.labLastPrintInfo.TabIndex = 0;
       this.labLastPrintInfo.Text = "LastPrintInfo";
       // 
       // Print
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+      this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 37F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(1279, 429);
+      this.ClientSize = new System.Drawing.Size(1279, 727);
       this.Controls.Add(this.groupBox2);
       this.Controls.Add(this.groupBox1);
       this.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -364,6 +390,8 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label labLastPrintInfo;
         private System.Windows.Forms.Button btnPrintPreview;
+        private System.Windows.Forms.TextBox txtCaseId;
+        private System.Windows.Forms.Label label2;
     }
 }
 
